@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="activity"
+            type="com.hashmob.aichat.main.home.tab.topic.tab.composition.result.CompositionResultActivity" />
+
+        <variable
+            name="viewModel"
+            type="com.hashmob.aichat.main.home.tab.topic.tab.composition.result.ResultViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/ic_rectangle_bg"
+        tools:context=".main.home.tab.topic.tab.composition.result.CompositionResultActivity">
+
+        <include
+            android:id="@+id/header"
+            layout="@layout/header_layout"
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"
+            app:layout_constraintBottom_toTopOf="@id/tvResult"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvResult"
+            style="@style/tv16WhiteRegular"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginHorizontal="@dimen/_15sdp"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:background="@drawable/edt_bg"
+            android:padding="@dimen/_10sdp"
+            android:paddingBottom="@dimen/_10sdp"
+            android:scrollbars="vertical"
+            android:textColor="@color/colorEdittext"
+            android:textIsSelectable="true"
+            android:textSize="@dimen/_14ssp"
+            app:layout_constraintBottom_toTopOf="@id/viewBottom"
+            app:layout_constraintEnd_toEndOf="@id/header"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/header" />
+
+        <View
+            android:id="@+id/viewBottom"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_60sdp"
+            android:background="@color/colorPrimary"
+            android:padding="@dimen/_10sdp"
+            app:layout_constraintBottom_toBottomOf="@id/adViewContainer"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvResult" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnCopy"
+            style="@style/btnStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_10sdp"
+            android:drawableStart="@drawable/ic_copy"
+            android:drawablePadding="@dimen/_5sdp"
+            android:gravity="start|center_vertical"
+            android:onClick="@{(v)->viewModel.onClick(v)}"
+            android:padding="@dimen/_5sdp"
+            android:paddingStart="@dimen/_35sdp"
+            android:text="@string/copy"
+            app:layout_constraintBottom_toBottomOf="@id/viewBottom"
+            app:layout_constraintEnd_toStartOf="@+id/btnListen"
+            app:layout_constraintStart_toStartOf="@id/viewBottom"
+            app:layout_constraintTop_toTopOf="@id/viewBottom"
+            tools:ignore="RtlSymmetry" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnListen"
+            style="@style/btnStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_10sdp"
+            android:drawableStart="@drawable/ic_listen"
+            android:drawablePadding="@dimen/_5sdp"
+            android:gravity="start|center_vertical"
+            android:onClick="@{(v)->viewModel.onClick(v)}"
+            android:padding="@dimen/_5sdp"
+            android:paddingStart="@dimen/_35sdp"
+            android:text="@string/listen"
+            app:layout_constraintBottom_toBottomOf="@id/viewBottom"
+            app:layout_constraintEnd_toEndOf="@id/viewBottom"
+            app:layout_constraintStart_toEndOf="@id/btnCopy"
+            app:layout_constraintTop_toTopOf="@id/viewBottom"
+            tools:ignore="RtlSymmetry" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnStopListen"
+            style="@style/btnStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_10sdp"
+            android:drawableStart="@drawable/ic_listen"
+            android:drawablePadding="@dimen/_5sdp"
+            android:gravity="start|center_vertical"
+            android:onClick="@{(v)->viewModel.onClick(v)}"
+            android:padding="@dimen/_5sdp"
+            android:paddingStart="@dimen/_25sdp"
+            android:text="@string/stop_listen"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="@id/viewBottom"
+            app:layout_constraintEnd_toEndOf="@id/viewBottom"
+            app:layout_constraintStart_toEndOf="@id/btnCopy"
+            app:layout_constraintTop_toTopOf="@id/viewBottom"
+            tools:ignore="RtlSymmetry" />
+
+        <FrameLayout
+            android:id="@+id/adViewContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_5sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/viewBottom" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

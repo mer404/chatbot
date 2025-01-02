@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#2E4847</color>
+    <color name="colorPrimaryDark">#032017</color>
+    <color name="colorPrimaryLight">#4D6B6A</color>
+    <color name="colorPremium">#223433</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="colorBtn">#44A182</color>
+    <color name="colorTextChat">#021711</color>
+    <color name="colorChatBg">#DAFFF4</color>
+    <color name="colorTextSend">#10FFAF</color>
+    <color name="colorSwitch">#00FF0A</color>
+    <color name="colorMainDark">#021D15</color>
+    <color name="colorEdittext">#91A9A2</color>
+    <color name="colorTextDark">#011610</color>
+    <color name="colorTextTyping">#C4C4C4</color>
+    <color name="colorGradientEnd">#FF8869</color>
+    <color name="colorGradientStart">#FFEBA2</color>
+    <color name="colorPremiumText">#2C2C2C</color>
+    <color name="colorLanguageText">#343434</color>
+    <color name="color_blur_bg">#010E0B</color>
+</resources>

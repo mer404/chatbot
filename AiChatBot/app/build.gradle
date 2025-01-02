@@ -1,0 +1,184 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'kotlin-android-extensions'
+    id 'com.google.firebase.crashlytics'
+    id 'com.google.gms.google-services'
+    id 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin'
+}
+
+android {
+    compileSdk 34
+
+    defaultConfig {
+        applicationId "com.hashmob.wordpuzzle"
+//        applicationId "com.hashmob.chatbot"
+        minSdk 21
+        targetSdk 33
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+//        signingConfig signingConfigs.release
+    }
+    buildTypes {
+        release {
+            buildConfigField "String", "baseUrl", productionUrl
+            buildConfigField "String", "appsflyerKey", appsflyerKey
+            minifyEnabled false
+            debuggable true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            buildConfigField "String", "baseUrl", testUrl
+            buildConfigField "String", "appsflyerKey", appsflyerKey
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    buildFeatures {
+        viewBinding = true
+        dataBinding = true
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+ext {
+    daggerVersion = "2.40.5"
+    kotlin_version = '1.3.70'
+}
+def camerax_version = "1.0.0-beta07"
+dependencies {
+    implementation 'androidx.core:core-ktx:1.7.0'
+    implementation 'androidx.appcompat:appcompat:1.4.1'
+    implementation 'com.google.android.material:material:1.5.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.3'
+    implementation 'androidx.fragment:fragment-ktx:1.3.6'
+    //cardview
+    implementation "androidx.cardview:cardview:1.0.0"
+    implementation "androidx.legacy:legacy-support-v4:1.0.0"
+    //recyclerview
+    implementation "androidx.recyclerview:recyclerview:1.2.1"
+    //Android architecture components - Kotlin version - Coroutines
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.4.1'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.1'
+    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.4.1'
+
+    //Scalable dp
+    implementation 'com.intuit.sdp:sdp-android:1.0.6'
+    implementation 'com.intuit.ssp:ssp-android:1.0.6'
+
+    //Retrofit
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.9.0'
+    implementation "com.squareup.retrofit2:converter-gson:2.9.0"
+    implementation 'com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.2'
+
+    //dagger
+    implementation "com.google.dagger:dagger:$daggerVersion"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation "com.google.dagger:dagger-android:$daggerVersion"
+    implementation 'com.google.dagger:dagger-android-support:2.27'
+    implementation 'com.google.android.gms:play-services-maps:18.1.0'
+    implementation 'com.google.firebase:firebase-config-ktx:21.4.1'
+    implementation 'androidx.test.ext:junit-ktx:1.1.5'
+    testImplementation 'org.testng:testng:6.9.6'
+//    implementation 'androidx.datastore:datastore-core-android:+'
+    kapt "com.google.dagger:dagger-android-processor:$daggerVersion"
+    kapt "com.google.dagger:dagger-compiler:$daggerVersion"
+    kaptAndroidTest "com.google.dagger:dagger-compiler:$daggerVersion"
+
+    //MultiDex
+    implementation 'androidx.multidex:multidex:2.0.1'
+
+    //ccp
+    implementation 'com.hbb20:ccp:2.6.0'
+
+    /*RxJava lib*/
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
+    implementation 'io.reactivex.rxjava2:rxjava:2.2.19'
+
+    implementation 'gun0912.ted:tedpermission:2.2.3'
+
+    implementation 'com.github.bumptech.glide:glide:4.12.0'
+    kapt 'com.github.bumptech.glide:compiler:4.12.0'
+
+    //round imageview
+    implementation 'com.makeramen:roundedimageview:2.3.0'
+
+    //range seek bar
+    implementation "com.rizlee.view:rangeseekbar:1.0.0"
+
+    // Add the dependency for the Firebase SDK for Google Analytics
+//    implementation 'com.google.firebase:firebase-auth:21.0.2'
+    implementation 'com.google.firebase:firebase-core:20.1.1'
+    implementation 'com.google.firebase:firebase-crashlytics-ktx:18.2.9'
+    implementation 'com.google.firebase:firebase-analytics-ktx:20.1.1'
+    implementation 'com.google.firebase:firebase-database:20.0.4'
+    implementation 'com.google.firebase:firebase-messaging-ktx:23.0.2'
+    implementation platform('com.google.firebase:firebase-bom:31.1.1')
+    implementation 'com.google.firebase:firebase-auth-ktx'
+    implementation 'com.google.android.gms:play-services-auth:20.4.0'
+    implementation 'com.google.firebase:firebase-database-ktx'
+
+
+
+
+    //photoview for zoom in zoom out imageview
+    implementation 'com.github.chrisbanes:PhotoView:2.3.0'
+
+    //exo player
+    implementation 'com.github.HamidrezaAmz:MagicalExoPlayer:3.0.5'
+
+    //file picker.
+    implementation 'com.github.jaiselrahman:FilePicker:1.3.2'
+    //Billing Client
+    implementation "com.android.billingclient:billing:6.0.0"
+    //appsflyer
+    implementation 'com.appsflyer:af-android-sdk:6.3.2'
+    //facebook
+    implementation 'com.facebook.android:facebook-login:14.1.1'
+    implementation 'com.jakewharton:butterknife:10.0.0'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:10.0.0'
+
+    implementation 'com.ernestoyaquello.dragdropswiperecyclerview:drag-drop-swipe-recyclerview:1.1.1'
+    //noinspection GradleCompatible
+    implementation 'com.android.support:recyclerview-v7:21.0.0'
+    //noinspection GradleCompatible
+    implementation 'com.android.support:support-v4:20.+'
+    implementation "com.daimajia.swipelayout:library:1.2.0@aar"
+    //noinspection GradleCompatible
+    implementation 'com.android.support:recyclerview-selection:28.0.0'
+
+    api 'com.theartofdev.edmodo:android-image-cropper:2.8.+'
+    //Dots indicators library
+    implementation "com.tbuonomo:dotsindicator:4.3"
+    //IText to PDF Library
+    implementation 'com.itextpdf:itextpdf:5.5.13'
+    //Circle ImageView
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
+    //Google Ads Library
+    implementation 'com.google.android.gms:play-services-ads:21.5.0'
+    //One signal Library
+    implementation 'com.onesignal:OneSignal:[4.0.0, 4.99.99]'
+    annotationProcessor "com.google.dagger:dagger-android-processor:2.11"
+    //Lottie Animation
+    implementation 'com.airbnb.android:lottie:5.0.2'
+    // CameraX core library using camera2 implementation
+    implementation "androidx.camera:camera-camera2:$camerax_version"
+    // CameraX Lifecycle Library
+    implementation "androidx.camera:camera-lifecycle:$camerax_version"
+    // CameraX View class
+    implementation "androidx.camera:camera-view:1.0.0-alpha14"
+}

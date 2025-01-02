@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="data"
+            type="com.hashmob.aichat.data.model.firebase.data.StyleItem" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="@dimen/_100sdp"
+            android:layout_margin="@dimen/_5sdp"
+            android:background="@drawable/frame_bg"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/ivFilter"
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="@dimen/_100sdp"
+            android:padding="@dimen/_6sdp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_no_filter"
+            app:layout_constraintBottom_toTopOf="@id/tvFilterName"
+            app:layout_constraintEnd_toEndOf="@id/view"
+            app:layout_constraintStart_toStartOf="@id/view"
+            app:layout_constraintTop_toTopOf="@id/view"
+            app:shapeAppearance="@style/RoundImageStyle" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvFilterName"
+            style="@style/poppinsMedium12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:text="@{data.name}"
+            app:layout_constraintStart_toStartOf="@id/ivFilter"
+            app:layout_constraintTop_toBottomOf="@id/ivFilter" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

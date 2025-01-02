@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="activity"
+            type="com.hashmob.aichat.main.home.tab.topic.tab.composition.CompositionActivity" />
+
+        <variable
+            name="viewModel"
+            type="com.hashmob.aichat.main.home.tab.topic.tab.composition.CompositionViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/ic_rectangle_bg"
+        tools:context=".main.home.tab.topic.tab.composition.CompositionActivity">
+
+        <include
+            android:id="@+id/header"
+            layout="@layout/header_layout"
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"
+            app:layout_constraintBottom_toTopOf="@+id/scrollView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ScrollView
+            android:id="@+id/scrollView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@id/adViewContainer"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/header">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:fillViewport="true"
+                android:background="@drawable/ic_rectangle_bg">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvTopic"
+                    style="@style/tv16WhiteBold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_15sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:text="@string/write"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/edtTopic"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginEnd="@dimen/_15sdp"
+                    android:background="@drawable/edt_bg"
+                    android:gravity="top"
+                    android:hint="@string/start_typing"
+                    android:imeOptions="actionDone"
+                    android:inputType="textMultiLine"
+                    android:lines="6"
+                    android:maxLength="1000"
+                    android:paddingHorizontal="@dimen/_10sdp"
+                    android:paddingTop="@dimen/_10sdp"
+                    android:paddingBottom="@dimen/_30sdp"
+                    android:text="@={viewModel.topic}"
+                    android:textColor="@color/colorEdittext"
+                    android:textColorHint="@color/colorEdittext"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/tvTopic"
+                    app:layout_constraintTop_toBottomOf="@id/tvTopic" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvCounter"
+                    style="@style/tv13WhiteRegular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:layout_marginBottom="@dimen/_10sdp"
+                    android:text="@string/_0_1000"
+                    android:textSize="@dimen/_12ssp"
+                    app:layout_constraintBottom_toBottomOf="@id/edtTopic"
+                    app:layout_constraintEnd_toEndOf="@id/edtTopic" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvFreeMessage"
+                    style="@style/poppinsMedium12"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:text="@string/you_have"
+                    app:layout_constraintStart_toStartOf="@id/edtTopic"
+                    app:layout_constraintTop_toBottomOf="@id/edtTopic" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvGetPremium"
+                    style="@style/poppinsMedium12"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:onClick="@{(v)->viewModel.onClick(v)}"
+                    android:text="@string/get_premium"
+                    android:textColor="@color/colorBtn"
+                    app:layout_constraintStart_toEndOf="@id/tvFreeMessage"
+                    app:layout_constraintTop_toBottomOf="@id/edtTopic" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvSetting"
+                    style="@style/tv16WhiteBold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:text="@string/text_settings"
+                    app:layout_constraintBottom_toTopOf="@id/rcvSetting"
+                    app:layout_constraintStart_toStartOf="@id/tvTopic"
+                    app:layout_constraintTop_toBottomOf="@id/tvFreeMessage" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rcvSetting"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="-5dp"
+                    app:layout_constraintBottom_toTopOf="@id/btnSubmit"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvSetting"
+                    tools:itemCount="2"
+                    tools:listitem="@layout/item_topic_setting" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnSubmit"
+                    style="@style/btnStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:layout_marginEnd="@dimen/_15sdp"
+                    android:layout_marginBottom="@dimen/_10sdp"
+                    android:onClick="@{(v)->viewModel.onClick(v)}"
+                    android:padding="@dimen/_10sdp"
+                    android:text="@string/submit"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/tvTopic"
+                    app:layout_constraintTop_toBottomOf="@id/rcvSetting" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+
+        <FrameLayout
+            android:id="@+id/adViewContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_5sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/scrollView" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
